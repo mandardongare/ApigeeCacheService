@@ -16,19 +16,22 @@ import com.squarespace.jersey2.guice.BootstrapUtils;
 
 public class ApigeeCacheServiceServerBuilder {
 
-  private int port = 8080;
+  private String webPort = System.getenv("PORT");
 
   public ApigeeCacheServiceServerBuilder() {
     super();
   }
 
-  public ApigeeCacheServiceServerBuilder(int port) {
+  public ApigeeCacheServiceServerBuilder(String webPort) {
     super();
-    this.port = port;
+    this.webPort = webPort;
   }
 
   public Server build() {
-    Server server = new Server(port);
+    if (webPort == null || webPort.isEmpty()) {
+      webPort = "8080";
+    }
+    Server server = new Server(Integer.parseInt(webPort));
 
     ServiceLocator locator = BootstrapUtils.newServiceLocator();
 
