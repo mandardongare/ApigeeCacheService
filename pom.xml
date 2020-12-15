@@ -146,47 +146,6 @@
 					</dependency>
 				</dependencies>
 			</plugin>
-			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-shade-plugin</artifactId> 
-				<version>2.4.3</version> <configuration> <finalName>jetty-embedded-example-1.0.0</finalName> 
-				</configuration> <executions> <execution> <phase>package</phase> <goals> 
-				<goal>shade</goal> </goals> <configuration> <transformers> <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer"> 
-				<mainClass>com.prokarma.apigee.caches.ApigeeCacheServiceApplication</mainClass> 
-				</transformer> </transformers> </configuration> </execution> </executions> 
-				</plugin> -->
-			<plugin>
-				<!-- Build an executable JAR -->
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jar-plugin</artifactId>
-				<version>3.1.0</version>
-				<configuration>
-					<archive>
-						<manifest>
-							<addClasspath>true</addClasspath>
-							<classpathPrefix>libs/</classpathPrefix>
-							<mainClass>com.prokarma.apigee.caches.ApigeeCacheServiceApplication</mainClass>
-						</manifest>
-					</archive>
-				</configuration>
-			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-dependency-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>copy-dependencies</id>
-						<phase>prepare-package</phase>
-						<goals>
-							<goal>copy-dependencies</goal>
-						</goals>
-						<configuration>
-							<outputDirectory>
-								${project.build.directory}/libs
-							</outputDirectory>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
 			<plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
